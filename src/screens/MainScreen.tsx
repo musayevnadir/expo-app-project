@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import { View, StyleSheet, Image, Text, ActivityIndicator } from "react-native";
 import { Button } from "../components/Button";
 
-// ! Component
-
 export const MainScreen: React.FC = () => {
   const [imageText, setImageText] = useState<string>("Not Image");
+
   const [url, setUrl] = useState<string | null>(null);
   const [activeIndicator, setActiveIndicator] = useState<boolean>(true);
 
   const handleImageOne = () => {
-    setImageText(() => "Image 1");
+    setImageText(() => "Image-1");
+
     setUrl(
       () =>
         "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg"
@@ -19,7 +19,8 @@ export const MainScreen: React.FC = () => {
   };
 
   const handleImageTwo = () => {
-    setImageText(() => "Image 2");
+    setImageText(() => "Image-2");
+
     setUrl(
       () =>
         "https://www.scusd.edu/sites/main/files/main-images/camera_lense_0.jpeg"
@@ -27,22 +28,14 @@ export const MainScreen: React.FC = () => {
   };
 
   const handleImageThree = () => {
-    setImageText(() => "Image 3");
+    setImageText(() => "Image-3");
+
     setUrl(() => "https://www.imageen.com/graphics/info/sunset_ocean_tree.jpg");
-  };
-
-  const handleStartLoading = () => {
-    setActiveIndicator(true);
-  };
-
-  const handleEndLoading = () => {
-    setActiveIndicator(false);
   };
 
   return (
     <View style={styles.root}>
       <Text style={styles.text}>{imageText}</Text>
-      <View></View>
       <ActivityIndicator
         size={"large"}
         animating={activeIndicator}
@@ -50,8 +43,8 @@ export const MainScreen: React.FC = () => {
       />
       {url ? (
         <Image
-          onLoadStart={handleStartLoading}
-          onLoadEnd={handleEndLoading}
+          onLoadStart={() => setActiveIndicator(true)}
+          onLoadEnd={() => setActiveIndicator(false)}
           resizeMode={"cover"}
           style={styles.url}
           src={url}
