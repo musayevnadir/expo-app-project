@@ -7,11 +7,11 @@ export const MainScreen: React.FC = () => {
   const [imageText, setImageText] = useState<string>("Not Image");
 
   const [url, setUrl] = useState<string | null>(null);
-  const [activeIndicator, setActiveIndicator] = useState<boolean>(true);
+  const [activeIndicator, setActiveIndicator] = useState<boolean>(false);
 
   const handleImageOne = () => {
+    setUrl(null);
     setImageText(() => "Image-1");
-
     setUrl(
       () =>
         "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg"
@@ -19,8 +19,8 @@ export const MainScreen: React.FC = () => {
   };
 
   const handleImageTwo = () => {
+    setUrl(null);
     setImageText(() => "Image-2");
-
     setUrl(
       () =>
         "https://www.scusd.edu/sites/main/files/main-images/camera_lense_0.jpeg"
@@ -28,8 +28,8 @@ export const MainScreen: React.FC = () => {
   };
 
   const handleImageThree = () => {
+    setUrl(null);
     setImageText(() => "Image-3");
-
     setUrl(() => "https://www.imageen.com/graphics/info/sunset_ocean_tree.jpg");
   };
 
